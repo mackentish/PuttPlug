@@ -89,6 +89,7 @@ src/
 
 ```bash
 npm start          # dev server
+npm run tunnel     # dev server over a public ngrok tunnel
 npm run ios        # dev server, opening the iOS simulator
 npm run lint
 npm run typecheck
@@ -96,6 +97,24 @@ npm run format:fix
 ```
 
 Everything runs in **Expo Go** — no development build or `prebuild` needed.
+
+### Testing on a phone that isn't on your network
+
+`npm start` serves over the LAN, which fails when your phone and laptop are on
+different networks, when the Wi-Fi has client isolation on (most corporate and
+guest networks), or when you want to hand a build to someone elsewhere.
+
+`npm run tunnel` routes the dev server through a public
+`*.exp.direct` URL instead, so Expo Go can reach it from anywhere. It's slower
+than LAN — every bundle request makes a round trip — so prefer plain
+`npm start` when both devices are on the same network.
+
+This needs no account or auth token: `@expo/ngrok` is already a dev dependency,
+and Expo provisions the subdomain.
+
+> The tunnel exposes your **development server**, not the app's data. PuttPlug
+> itself still makes no network calls and stores everything on-device — the
+> offline design is unchanged.
 
 ### Demo data
 
