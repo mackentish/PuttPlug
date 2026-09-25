@@ -1,4 +1,12 @@
-This is an Expo/React Native mobile application. Prioritize mobile-first patterns, performance, and cross-platform compatibility.
+This is PuttPlug, an Expo/React Native app for logging disc golf putting sessions. Prioritize mobile-first patterns, performance, and cross-platform compatibility.
+
+## Project rules
+
+- **Offline-only, by design.** No network calls, no auth, no analytics, ever. All state lives in AsyncStorage behind `src/lib/storage.ts`.
+- **No `dark:` class variants.** Colour tokens are semantic and already hold the correct value for the active mode — see `src/styles/colorThemes.ts`. Write `bg-surface text-content`, never `bg-white dark:bg-black`. A React Native `<Modal>` renders outside the style cascade and must re-apply `varsForTheme()`.
+- **Never coerce a null percentage to 0.** `Tally.pct` is `null` when there are no attempts; every display must show a placeholder instead. "No data" and "missed everything" mean very different things to someone tracking progress.
+- **All putting maths lives in `src/lib/stats.ts`.** Circle definitions and the user-facing distance copy come from the same `CIRCLES` constant so they can't drift apart. Note C1X is deliberately a subset of C1.
+- **Mutate sessions only through `src/lib/session.ts`**, which preserves the invariant that `station.missSpots.length === station.misses`.
 
 ## Expo has changed — do not trust your training data
 
