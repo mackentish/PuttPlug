@@ -34,7 +34,13 @@ export function Input({
                 // No Tailwind equivalent in React Native, so it reads the
                 // resolved palette directly.
                 placeholderTextColor={colors['content-muted']}
-                className={`rounded-xl border bg-surface-sunken px-4 py-3.5 text-base text-content ${
+                // `text-[16px]`, not `text-base`: the named size also emits
+                // `lineHeight: 24`, and a single-line TextInput sizes itself
+                // from the font's natural metrics while laying the glyphs out
+                // in that taller line box. The text ends up pushed down the
+                // field — lopsided padding, with the descenders running into
+                // the bottom edge. An arbitrary value sets the size alone.
+                className={`rounded-xl border bg-surface-sunken px-4 py-3.5 text-[16px] text-content ${
                     error ? 'border-danger' : 'border-border'
                 }`}
                 {...props}
