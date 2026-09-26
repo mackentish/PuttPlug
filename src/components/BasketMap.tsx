@@ -7,7 +7,7 @@ import {
     View,
 } from 'react-native';
 import { useColors } from '@/hooks/useColors';
-import { BASKET_X, ROW_BANDS, clampSpot } from '@/lib/missMap';
+import { clampSpot } from '@/lib/missMap';
 import { type MissSpot } from '@/types';
 import { Typography } from './Typography';
 
@@ -15,7 +15,7 @@ import { Typography } from './Typography';
 // tsconfig paths are wired up.
 const BASKET = require('../../assets/images/basket.png');
 
-/** The artwork's aspect ratio (600x800). Everything positions against this. */
+/** The artwork's aspect ratio (1086x1448). Everything positions against this. */
 const ASPECT = 3 / 4;
 
 /**
@@ -34,15 +34,12 @@ const ASPECT = 3 / 4;
 export function BasketMap({
     spots,
     onTapSpot,
-    showGuides = false,
     dotSize = 26,
     className = '',
 }: {
     spots: MissSpot[];
     /** Provide to make the basket tappable. */
     onTapSpot?: (spot: MissSpot) => void;
-    /** Faint dividers showing the high/center/low and left/right regions. */
-    showGuides?: boolean;
     dotSize?: number;
     className?: string;
 }) {
@@ -69,33 +66,9 @@ export function BasketMap({
                 source={BASKET}
                 style={{ width: '100%', height: '100%' }}
                 contentFit="contain"
-                // The placeholder art is a flat mid-grey silhouette that reads
+                // The art is mid-grey line work on transparency, which reads
                 // on both the light and dark surface, so no tint is needed.
             />
-
-            {showGuides ? (
-                <View pointerEvents="none" className="absolute inset-0">
-                    <View
-                        className="absolute w-px bg-border"
-                        style={{
-                            left: '50%',
-                            top: `${ROW_BANDS.high.from * 100}%`,
-                            height: `${(ROW_BANDS.low.to - ROW_BANDS.high.from) * 100}%`,
-                        }}
-                    />
-                    {[ROW_BANDS.high.to, ROW_BANDS.center.to].map((y) => (
-                        <View
-                            key={y}
-                            className="absolute h-px bg-border"
-                            style={{
-                                top: `${y * 100}%`,
-                                left: `${BASKET_X.from * 100}%`,
-                                width: `${(BASKET_X.to - BASKET_X.from) * 100}%`,
-                            }}
-                        />
-                    ))}
-                </View>
-            ) : null}
 
             {width > 0 ? (
                 <View pointerEvents="none" className="absolute inset-0">

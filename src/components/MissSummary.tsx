@@ -39,11 +39,7 @@ export function MissSummary({
                 </Typography>
             )}
 
-            <BasketMap
-                spots={tally.spots}
-                showGuides
-                className="mt-3 self-center"
-            />
+            <BasketMap spots={tally.spots} className="mt-3 self-center" />
 
             <View className="mt-2">
                 <BasketMapCaption located={tally.located} total={tally.total} />

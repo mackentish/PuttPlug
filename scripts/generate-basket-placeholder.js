@@ -1,14 +1,15 @@
 /*
-    Draws the PLACEHOLDER basket art used by src/components/MissMap.tsx.
+    Draws a PLACEHOLDER basket for src/components/BasketMap.tsx, so the repo
+    has no binary asset nobody can regenerate. assets/images/basket.png is
+    currently real artwork, not this output -- run this only if that art is
+    lost, then re-measure ROW_BANDS against whatever you end up shipping.
 
-    This exists so the repo has no binary asset nobody can regenerate. Replace
-    assets/images/basket.png with real artwork whenever you like -- the only
-    contract MissMap relies on is the 3:4 aspect ratio and the vertical bands
-    it lines its six tap zones up with:
+    The contract BasketMap relies on is the 3:4 aspect ratio and the bands in
+    src/lib/missMap.ts, which this placeholder is drawn to match:
 
-        high   ~ 18% - 42% of the height   (chains)
-        center ~ 42% - 62% of the height   (rim / upper cage)
-        low    ~ 62% - 88% of the height   (lower cage / pole)
+        high   16% - 44% of the height   (top rim / upper chains)
+        center 44% - 64% of the height   (lower chains)
+        low    64% - 90% of the height   (cage)
 
     Run: node scripts/generate-basket-placeholder.js
 */

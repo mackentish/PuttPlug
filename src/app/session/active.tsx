@@ -274,7 +274,6 @@ export default function ActiveSessionScreen() {
 
                 <BasketMap
                     spots={missMap?.spots ?? []}
-                    showGuides
                     onTapSpot={(spot) => void onMiss(spot)}
                     className="mt-3 self-center"
                 />
