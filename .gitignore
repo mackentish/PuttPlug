@@ -41,3 +41,7 @@ example
 # generated native folders
 /ios
 /android
+
+# google play service account key (eas submit) — never commit
+puttplug-*.json
+*-service-account*.json
