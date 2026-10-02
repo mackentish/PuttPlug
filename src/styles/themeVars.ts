@@ -11,6 +11,7 @@ export const paletteLabels: Record<PaletteName, string> = {
     fairway: 'Fairway',
     dusk: 'Dusk',
     clay: 'Clay',
+    rose: 'Rose',
 };
 
 /**
