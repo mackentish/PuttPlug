@@ -29,7 +29,7 @@ import { formatPct, tallyMissMap, tallyStations } from '@/lib/stats';
 import { type MissSpot, type Session } from '@/types';
 
 /** Distances a putting drill actually uses. Anything else goes via the stepper. */
-const QUICK_RANGES = [10, 15, 20, 25, 30, 35];
+const QUICK_RANGES = [15, 20, 25, 30, 35];
 
 const MIN_FT = 1;
 const MAX_FT = 120;
